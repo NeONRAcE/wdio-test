@@ -1,11 +1,13 @@
-import {LoginButton, LoginWithPasswordButton, PasswordField, UsernameField} from "../locators/auth-page.locators";
+import { Button } from '../locators/types/button';
+import { Input } from '../locators/types/input';
+import Page from './page';
 
-export class AuthPage {
-  public async open(): Promise<string> {
-    return browser.url('https://student.skyeng.ru/home');
+export class AuthPage extends Page {
+  async open(): Promise<string> {
+    return super.open('https://student.skyeng.ru/home');
   }
 
-  public async login(username: string, password: string): Promise<void> {
+  async login(username: string, password: string): Promise<void> {
     await this.clickLoginWithPassword();
     await this.fillUsernameField(username);
     await this.fillPasswordField(password);
@@ -13,19 +15,19 @@ export class AuthPage {
   }
 
   private async clickLoginWithPassword(): Promise<void> {
-    await new LoginWithPasswordButton().locator.click();
+    await new Button($('[class*="js-phone-form-to-username-password"]'), 'Login with password button').click();
   }
 
   private async fillUsernameField(username: string): Promise<void> {
-    await new UsernameField().locator.setValue(username);
+    await new Input($('[name="username"]'), 'Username field').fill(username);
   }
 
   private async fillPasswordField(password: string): Promise<void> {
-    await new PasswordField().locator.setValue(password);
+    await new Input($('[type="password"]'), 'Password field').fill(password);
   }
 
   private async clickLoginButton(): Promise<void> {
-    await new LoginButton().locator.click();
+    await new Button($('button .js-username-password-form-button')).click();
   }
 }
 
