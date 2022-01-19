@@ -15,8 +15,24 @@ class AdultsLandingPage extends Page {
     await new Button($('.intro-button'), 'Intro button').waitUntilElementIsVisible();
   }
 
+  async clickIntroButton(): Promise<void> {
+    await new Button($('.intro-button'), 'Intro button').click();
+  }
+
+  async clickCloseButton(): Promise<void> {
+    await new Button($('.modal-cross-icon'), 'Close modal form button').click();
+  }
+
+  async checkAddStudentButton(): Promise<void> {
+    await new Button($('.add-button'), 'Add student button').waitUntilElementIsVisible();
+  }
+
   async checkOrderButton(): Promise<void> {
     await new Button($('.order-button'), 'Order button').waitUntilElementIsVisible();
+  }
+
+  async clickOrderButton(): Promise<void> {
+    await new Button($('.order-button'), 'Order button').click();
   }
 
   async checkOrderTitle(): Promise<void> {
@@ -30,6 +46,10 @@ class AdultsLandingPage extends Page {
     await new Button($('.progress-button'), 'Progress order button').waitUntilElementIsVisible();
   }
 
+  async clickProgressOrderButton(): Promise<void> {
+    await new Button($('.progress-button'), 'Progress order button').click();
+  }
+
   async checkProgressOrderTitle(): Promise<void> {
     await new Block($('.progress-note*=покажем, как проходит обучение, определим ваш уровень'), 'Progress order title').waitUntilElementIsPresent();
   }
@@ -38,11 +58,19 @@ class AdultsLandingPage extends Page {
     await new Button($('.talking-button'), 'Talking order button').waitUntilElementIsVisible();
   }
 
+  async clickTalkingOrderButton(): Promise<void> {
+    await new Button($('.talking-button'), 'Talking order button').click();
+  }
+
   async checkTalkingOrderTitle(): Promise<void> {
     await new Block($('.talking-txt*=Разговаривайте с учениками вашего уровня в видеочате'), 'Talking order title').waitUntilElementIsVisible();
   }
 
   async checkLastOrderButton(): Promise<void> {
+    await new Button($('.--last .order-button'), 'Order button').waitUntilElementIsVisible();
+  }
+
+  async clickLastOrderButton(): Promise<void> {
     await new Button($('.--last .order-button'), 'Order button').waitUntilElementIsVisible();
   }
 
