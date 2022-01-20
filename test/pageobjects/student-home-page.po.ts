@@ -3,11 +3,31 @@ import { Block } from '../locators/types/block';
 import { Button } from '../locators/types/button';
 
 class StudentHomePage extends Page {
+  async open(): Promise<string> {
+    return super.open('https://student.skyeng.ru/home');
+  }
+
   async switchToProduct(productName: string): Promise<void> {
     await new Block($('adults-shared-product-switcher-list'), 'Product switcher').waitUntilElementIsVisible();
     switch (productName) {
       case 'english':
         await new Button($(`adults-shared-product-switcher-item .-english`), `Product switcher "English"`).click();
+        break;
+
+      case 'talks':
+        await new Button($(`adults-shared-product-switcher-item .-talks`), `Product switcher "Talks"`).click();
+        break;
+
+      case 'premium':
+        await new Button($(`adults-shared-product-switcher-item .-star`), `Product switcher "Premium"`).click();
+        break;
+
+      case 'speaking':
+        await new Button($(`adults-shared-product-switcher-item .-group`), `Product switcher "Speaking"`).click();
+        break;
+
+      case 'chess':
+        await new Button($(`adults-shared-product-switcher-item .-chess`), `Product switcher "Chess"`).click();
         break;
 
       default:
@@ -48,6 +68,18 @@ class StudentHomePage extends Page {
       return;
     }
     await locator.waitUntilElementIsInvisible();
+  }
+
+  async checkTalksWidget(): Promise<void> {
+    await new Block($('.payment-widget'), 'Talks widget').waitUntilElementIsVisible();
+  }
+
+  async checkPremiumWidget(): Promise<void> {
+    await new Block($('.premium-form'), 'Premium widget').waitUntilElementIsVisible();
+  }
+
+  async checkSpeakingWidget(): Promise<void> {
+    await new Block($('.start-skyeng'), 'Speaking widget').waitUntilElementIsPresent();
   }
 }
 

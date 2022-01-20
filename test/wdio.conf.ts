@@ -8,7 +8,8 @@ export const config: WebdriverIO.Config = {
   },
   specs: [
     // './test/specs/check-installment-button.e2e-spec.ts',
-    './test/specs/adults-landing.e2e-spec.ts',
+    // './test/specs/adults-landing.e2e-spec.ts',
+    './test/specs/switch-between-products.e2e-spec.ts',
   ],
   exclude: [],
   maxInstances: 1,

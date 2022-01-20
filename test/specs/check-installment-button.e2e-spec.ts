@@ -1,7 +1,7 @@
 import AuthPage from '../pageobjects/auth.po';
 import StudentHomePage from '../pageobjects/student-home-page.po';
 
-xdescribe('Payment page - Eng adults', () => {
+describe('Payment page - Eng adults', () => {
   it('Check installment blocks at payment page', async () => {
     await AuthPage.open();
     await AuthPage.login('testmecha579@yandex.ru', 'password');
